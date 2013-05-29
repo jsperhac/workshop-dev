@@ -44,8 +44,6 @@
 #
 # a. Enter these numbers into an R vector. Use the function diff() on the data. What is the result?
 #
-miles = c(65311, 65624, 65908, 66219, 66499, 66821, 67145, 67447)
-x = diff(miles)
 
 # b. Use the function length() to find the lengths of the miles and x vectors. 
 
@@ -64,11 +62,7 @@ boxplot(x, ylab="Distance between fill-ups/miles", main="Milage at fill-ups")
 #
 # a. Enter this into a vector called commute. Use R functions to find the longest and shortest commute 
 # times, the average, and a statistical summary.
-# ANS:
-commute = c(17, 16, 20, 24, 22, 15, 21, 15, 17, 22)
-range(commute)
-mean(commute)
-summary(commute)
+
 #
 # b. Run the following command to create a boxplot of the miles between fill-ups. The bottom of the box 
 # is Q1, the top of the box is Q3, the line in the center of the box is the median, and the "whiskers" 
@@ -77,9 +71,7 @@ boxplot(x, ylab="Commute time/minutes", main="Original commute data")
 #
 # c. Suppose the 24 was a mistake; it should have been 18. How can you fix this? Do so, and then find 
 # the new average. Hint: Index into the vector, then use an assignment statement to fix this mistake.
-# ANS:
-commute[4] = 18
-mean(commute)
+
 #
 # d. Now that you have fixed the datapoint, re-run the boxplot and the summary command. 
 summary(commute)
@@ -90,8 +82,6 @@ boxplot(x, ylab="Commute time/minutes", main="Corrected commute data")
 #   sum( commute >= 20 )
 #
 # f. What percent of your commutes are less than 17 minutes? How can you answer this with R?
-# ANS:
-sum(commute<17)/length(commute)
 
 # ----------------------------------------------------------
 
@@ -100,27 +90,17 @@ sum(commute<17)/length(commute)
 # 46 33 39 37 46 30 48 32 49 35 30 48
 
 # a. Enter this data into a variable called bill. 
-# ANS:
-bill = c(46, 33, 39, 37, 46, 30, 48, 32, 49, 35, 30, 48)
+
 
 # b. Find the total amount, and the average amount, that you spent last year on cell phone bills. 
-# ANS:
-sum(bill)
-mean(bill)
+
 
 # c. What is the smallest amount you spent on your phone bill last year? What is the largest? Assuming 
 # the months are entered in order, which months were these? Hint: use the which() function to find the 
 # months.
-# ANS:
-range(bill)            # Get both min and max, in one command
-which(bill==min(bill)) # Minimum: months 6 and 11 (June and November)
-which(bill==max(bill)) # Maximum: month 9 (September)
+
 
 # d. Run the following calculation, and explain its result:
 range(bill)[2] - range(bill)[1]
-# ANS: This computes the difference between the smallest and largest cell phone bills last year.
 
 # e. How many months was the amount greater than $40? What percentage was this?
-# ANS:
-sum(bill>40)
-sum(bill>40)/length(bill)
