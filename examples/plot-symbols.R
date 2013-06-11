@@ -46,8 +46,9 @@ displayPlotSymbols <- function() {
   # The following, added to the plot that results from the above three statements, demonstrates other choices of pch.
   points(1:7,rep(2.5,7), pch=(0:6)+7)
   
-  # Plot symbols 7 to 13
-  text((1:7), rep(2.5,7), paste((0:6)+7), pos=4)
+  # Plot symbols 7 to 13; use pos to position the text.
+  # different values of pos position the text with respect to the point:
+  #   1=below, 2=left, 3=top, 4=right. 
   points(1:7,rep(2,7), pch=(0:6)+14)
   
   # Label with symbol number

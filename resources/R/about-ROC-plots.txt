@@ -12,14 +12,25 @@ A ROC curve demonstrates several things:
     The slope of the tangent line at a cutpoint gives the likelihood ratio (LR) for that value of the test. 
     The area under the curve is a measure of test accuracy. 
     
- The area under the curve measures discrimination, that is, the ability of the test to correctly classify those belonging to one class or the other. Consider the situation in which all examples are already correctly classified into two groups. You randomly pick on from the positive group and one from the negative group and do the test on both. The example with the more abnormal test result should be the one from the negative group. The area under the curve is the percentage of randomly drawn pairs for which this is true (that is, the test correctly classifies the two examples in the random pair).    
+ The area under the curve measures discrimination, that is, the ability of the test to correctly classify those examples 
+belonging to one class or the other. Consider the situation in which all examples are already correctly classified into 
+two groups. You randomly pick on from the positive group and one from the negative group and do the test on both. The 
+example with the more abnormal test result should be the one from the negative group. The area under the curve is the 
+percentage of randomly drawn pairs for which this is true (that is, the test correctly classifies the two examples in 
+the random pair).    
 
 
-Read the following sources to learn about ROC curves
+Read the following sources to learn about ROC curves:
 
 http://www.medcalc.org/manual/roc-curves.php
 http://gim.unmc.edu/dxtests/roc2.htm and http://gim.unmc.edu/dxtests/roc3.htm
 http://www2.cs.uregina.ca/~dbd/cs831/notes/ROC/ROC.html
+
+An introduction to ROC analysis:
+https://www.sciencedirect.com/science/article/pii/S016786550500303X?np=y
+
+The pROC package:
+https://www.biomedcentral.com/1471-2105/12/77
 
 # ---------------
 
