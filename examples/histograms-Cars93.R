@@ -7,8 +7,8 @@ cr = Cars93
 # histogram: how many examples in the dataset fall into each "bin"
 #   of a fixed size. 
 #   - need to: figure out sensible bin sizes (R uses defaults)
-#   - x axis must have numeric values:
-#       hist(cr$Origin)
+#   - x axis must have numeric values. Otherwise you see errors like this:
+#       > hist(cr$Origin)
 #       Error in hist.default(cr$Origin) : 'x' must be numeric
 # ---------------------------------------------------------------
 
@@ -34,7 +34,7 @@ hist(rpms, xlab=xname, main=paste("histogram of",xname,"default binning"),
 # hist(rpms, xlab=xname, main=paste("histogram of",xname, ", breaks=FD"), breaks="FD", col="grey")
 # par(mfrow=c(1,1), pch=1)
 
-# playing with the binning:
+# ----------- Playing with the binning: -------------
 
 # (suggested) number of bins for the histogram:
 par(mfrow=c(2,4))
@@ -120,19 +120,19 @@ par(mfrow=c(1,2))
 hist(cr$EngineSize, xlab="Engine Size/liters", col="blue", breaks=15) # col 12; breaks 12
 plot(density(cr$EngineSize))
 
-# Vehicle weight
-#hist(cr$Weight, xlab="Weight", col="red", breaks=15) # 25; breaks 15 or 18
-hist(cr$Weight, col="red", xlab="Weight")
-plot(density(cr$Weight))
+# # Vehicle weight
+# #hist(cr$Weight, xlab="Weight", col="red", breaks=15) # 25; breaks 15 or 18
+# hist(cr$Weight, col="red", xlab="Weight")
+# plot(density(cr$Weight))
 
 # Vehicle Length
 hist(cr$Length, xlab="Vehicle Length/in.", col="yellow", breaks=10) # 19; breaks 10 or 12
 plot(density(cr$Length))
 
-# Vehicle Turn Circle
-hist(cr$Turn.circle, xlab="Turning circle/ft.", col="purple", breaks=8) # 22
-plot(density(cr$Turn.circle))
-par(mfrow=c(1,1))
+# # Vehicle Turn Circle
+# hist(cr$Turn.circle, xlab="Turning circle/ft.", col="purple", breaks=8) # 22
+# plot(density(cr$Turn.circle))
+# par(mfrow=c(1,1))
 
 # -------------- comparing groups: kernel density ------------------
 
@@ -183,7 +183,49 @@ cl = levels(factor(cr$Man.trans.avail))
 colfill<-c(2:(2+length(cl)))
 legend(x="topright", cl, fill=colfill) 
 
-# Same comparison plot, for manual transmission:
+# ---- without sm library: ---
+# use same x and y limits in each plot
+par(mfrow=c(1,1))
+
+# x and y limits are found by experimentation:
+yl=c(0,0.055)
+xl=c(15,55)
+
+# Subset the MPG.highway column on whether the Man.trans is available or not:
+manTrans =   cr$MPG.highway[which(cr$Man.trans.avail=="Yes")]
+noManTrans = cr$MPG.highway[which(cr$Man.trans.avail=="No")]
+
+# weight each point according to the prevalence of its group in the dataset
+lm = length(manTrans)
+ln = length(noManTrans)
+len = lm+ln
+
+# now plot one subset (no man trans):
+plot(density(noManTrans, weights=rep(1/len,ln)),
+     col="blue",
+     main="Highway MPG Distribution by Man.trans.avail",
+     xlab="MPG, highway", 
+     ylim=yl,
+     xlim=xl)
+
+# do the overplotting with the other subset
+lines(density(manTrans, weights=rep(1/len,lm)),
+      col="red",
+      ylim=yl,
+      xlim=xl)
+
+grid(col="grey") # add a grid
+
+# add a legend to identify each line clearly
+legend(x="topright",
+       title="Manual trans. available?",
+       c("No","Yes"),
+       fill=c("blue","red"))
+
+
+# ---
+
+# Same comparison plot, for city MPG:
 # plot the densities:
 sm.density.compare(cr$MPG.city, as.integer(cr$Man.trans.avail), xlab="MPG, city")
 title(main="City MPG Distribution by Man.trans.avail")
@@ -215,3 +257,51 @@ title(main="City MPG Distribution by Drivetrain")
 cl = levels(factor(cr$DriveTrain))
 colfill<-c(2:(2+length(cl)))
 legend(x="topright", cl, fill=colfill) 
+
+# ---- without sm library: ---
+# use same x and y limits in each plot
+par(mfrow=c(1,1))
+
+# x and y limits are found by experimentation:
+yl=c(0,0.06)
+xl=c(10,57)
+
+# Subset the MPG.highway column on whether the Man.trans is available or not:
+fourWD =   cr$MPG.highway[which(cr$DriveTrain=="4WD")]
+front =   cr$MPG.highway[which(cr$DriveTrain=="Front")]
+rear =   cr$MPG.highway[which(cr$DriveTrain=="Rear")]
+
+# weight each point according to the prevalence of its group in the dataset
+l4 = length(fourWD)
+lf = length(front)
+lr = length(rear)
+len = l4+lf+lr
+
+# now plot one subset (no man trans):
+plot(density(fourWD, weights=rep(1/len,l4)),
+     col="blue",
+     main="Highway MPG Distribution by Drivetrain",
+     xlab="MPG, highway", 
+     ylim=yl,
+     xlim=xl)
+
+# do the overplotting with the other subset
+lines(density(front, weights=rep(1/len,lf)),
+      col="red",
+      ylim=yl,
+      xlim=xl)
+
+# do the overplotting with the other subset
+lines(density(rear, weights=rep(1/len,lr)),
+      col="darkgreen",
+      ylim=yl,
+      xlim=xl)
+
+grid(col="grey") # add a grid
+
+# add a legend to identify each line clearly
+legend(x="topright",
+       title="Drivetrain",
+       c("4WD","Front","Rear"),
+       fill=c("blue","red","darkgreen"))
+
