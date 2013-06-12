@@ -10,6 +10,8 @@ cr = Cars93
 # ------- Vehicle weight and highway MPG -------
 
 # Note that R labels the axes from the column names:
+
+# MPG.highway~weight is: MPG.highway vs. weight
 plot(formula=MPG.highway~Weight, 
      data=cr)
 
@@ -51,6 +53,7 @@ plot(formula=MPG.highway~Weight,
 fit=lm(cr$MPG.highway~cr$Weight)
 abline(fit)
 title("MPG highway with Vehicle Weight")
+
 par(mfrow=c(1,1), pch=1) # change back to default layout: 1 plot alone
 
 # --------- Overplotting on a single plot, using points() ----------
@@ -95,7 +98,7 @@ legend(x="topright",
        legend=c("Highway","City"), 
        pch=c(3,1),
        col=c("purple","blue"))          
-par(mfrow=c(1,1), pch=1)
+par(mfrow=c(1,1), pch=1) # default plot appearance
 
 # # ------------------ Wheelbase vs. Length scatter plot ------------------
 # 

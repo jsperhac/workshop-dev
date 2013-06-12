@@ -2,7 +2,7 @@
 #
 # Boxplots display basic descriptive statistics on subsets of a dataset.
 # features: Q1, Mean, Q3, min, max, and outliers (as circles)
-# To plot, specify the formula: your dataset, and the type of groups to split it into.
+# To plot, specify the formula: the dataset, and the groups into which to split it.
 #
 # for info type:
 # > ?boxplot
@@ -34,7 +34,7 @@ title("Vehicle Horsepower with Number of Cylinders")
 # Note that MPG is a numeric value, but still, we are doing some statistics on it!
 # hence we get a boxplot. 
 
-par(mfrow=c(1,2))
+par(mfrow=c(1,2)) # place two plots on a "page"
 xl = "MPG.city"
 yl="MPG.highway"
 colors=rainbow(length(levels(factor(cr$MPG.city))))
@@ -56,7 +56,7 @@ plot(formula=MPG.highway~MPG.city,
 title("MPG city and highway")
 fit2=lm(cr$MPG.highway~cr$MPG.city)
 abline(fit2)
-par(mfrow=c(1,1))
+par(mfrow=c(1,1)) # restore default: one plot per page
 
 # wow, which cars do better than 40 MPG in the city?
 #
@@ -74,7 +74,7 @@ par(mfrow=c(1,1))
 # boxplots of vehicle price by type. Ordering the categorical variables for clarity.
 
 colors=rainbow(length(levels(cr$Type)))
-par(mfrow=c(1,2))
+par(mfrow=c(1,2)) # two plots on a "page"
 
 # notice that the categorical variables are ordered alphabetically:
 boxplot(formula=Price~Type, 
@@ -96,7 +96,7 @@ boxplot(formula=Price~type,
         ylab='Average Price in Thousands of Dollars',
         col=colors)
 title("Vehicle weight by price, type ordered by price")
-par(mfrow=c(1,1))
+par(mfrow=c(1,1)) # restore default: one plot per page
 
 
 # --- Price with Manufacturer ----

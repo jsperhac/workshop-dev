@@ -73,12 +73,12 @@ snowcover <- data.frame(year=c(1970:1979),
 
 
 # d. Use the hist() command to plot a histogram of the snow cover values. Label your axes and the plot. 
-# Find the best binning to show the data. What is it? 
-# Hint: use the histogram syntax: hist(x=data, breaks=suggest_num_bins, xlab="x-label", main="title")
+# Hint: use the histogram syntax: hist(x=data, xlab="x-label", main="title")
 
 
 # e. Find the R summary of the snow cover column. Then make a boxplot of the snow cover column.
-# Hint: use the boxplot syntax: boxplot(x=data, ylab="y-label", main="title")
+# The boxplot should just be a graphical representation of the statistical summary you printed.
+# Hint: use the summary() command, and boxplot syntax: boxplot(x=data, ylab="y-label", main="title")
 
 
 # -------------------------------------------------------------
@@ -87,6 +87,8 @@ snowcover <- data.frame(year=c(1970:1979),
 #
 # The built-in data set mammals contains data on body weight versus brain weight for 
 # 62 species of land mammals. Use the command ?mammals to find out about the dataset.
+# First, load the dataset from the MASS package, using the command:
+data(mammals, package="MASS")
 #
 # a. Use the cor() function to find the correlation coefficient for body and brain weights. 
 # What does this coefficient suggest about the body and brain weights of land mammals?
@@ -101,14 +103,48 @@ snowcover <- data.frame(year=c(1970:1979),
 #
 # What do your log-log plots and the correlation results suggest about the data?
 
+# -------------------------------------------------------------
+
+# 4. Cars93 plots
+#
+# For these exercises, load the Cars93 dataset from the MASS package. You can adapt some of
+# the plot examples from class to create these plots.
+data(Cars93, package="MASS")
+cr=Cars93
+#
+# a. Make a histogram and density plot of Engine Size (displacement), plotted on the same
+#   'page'. Label the axes on the histogram. Compare the histogram and density plots.
+
+# b. Make a boxplot of the Cars93 dataset drivetrain types with engine RPM. Label the axes and the plot.
+#   Use color to distinguish the categorical variable values.
+# 
+#   Remind yourself:
+#   What do the ends of the boxes and the dotted lines mean? Are there any outliers? Can you find
+#   the cars represented by them?
+
+# c. For this exercise, don't worry about labels or nice presentation; concentrate on comparing the
+#    different plot types:
+#
+#     Create a simple histogram, a density plot, and a barplot of the Luggage Room variable from the Cars93 
+#     dataset. Which representation makes more sense to you? Would a pie chart be
+#     an effective way to represent this information about the Cars93 dataset?
+
+# d. Make a barplot of the Cars93 dataset by origin (USA/non USA) broken down by manual transmission
+#   availability.
+#   Don't forget to include a legend that indicates the color coding of the categorical variables,
+#   and label your axes and the plot appropriately.
+#   Can you conclude anything about whether Americans seem to prefer a manual or automatic transmission?
+
+# e. Create a piechart of Vehicle Airbags from the Cars93 dataset. Display each category's percentage 
+#   of the total dataset. Include a plot title.
 
 # -------------------------------------------------------------
 
-# 4. In the library MASS is a dataset called UScereal, which contains information about popular 
+# 5. In the library MASS is a dataset called UScereal, which contains information about popular 
 # breakfast cereals. Access the data set as follows:
 #   
-# library(MASS)   # make the data frame available
-# names(UScereal) # to see the names of the columns
+# data(UScereal, package="MASS") # load the UScereal data frame
+# names(UScereal)                # to see the names of the columns
 # 
 # Now, pick one of the following relationships to investigate, and comment on what you see. 
 # You can use tables, barplots, scatterplots, descriptive statistics, etc. to do your investigation.
@@ -120,7 +156,7 @@ snowcover <- data.frame(year=c(1970:1979),
 # 
 # Are there other relationships you can predict and investigate?
 
-library(MASS)
+data(UScereal, package="MASS")
 names(UScereal)
 u = UScereal
 

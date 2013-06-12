@@ -25,7 +25,8 @@ cr = Cars93
 xname="engine RPM"
 
 # default bin algorithm is used in this plot:
-hist(cr$RPM, 
+rpms = cr$RPM
+hist(rpms, 
      xlab="xname", 
      main=paste("histogram of",xname,"default binning"),
      col="grey")
@@ -108,3 +109,6 @@ hcols = c(12,13,19,20,22,25)
 
 # Use lapply to call tryBins() on the hcols vector of columns:
 lapply(hcols,tryBins)
+
+# reset default plot settings: one plot per page, default point:
+par(mfrow=c(1,1), pch=1)

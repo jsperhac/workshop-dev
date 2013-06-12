@@ -84,7 +84,7 @@ makePie <- function(col, name) {
 		      main=paste(name, "in Cars93 Dataset")) 
 }
 
-# a few examples:
+# a few examples using the makePie() function call:
 makePie(cr$Type, "Vehicle Type")
 makePie(cr$DriveTrain, "Vehicle Drivetrain")
 #makePie(cr$Passenger, "Max Number of Passengers")
@@ -97,7 +97,7 @@ makePie(cr$DriveTrain, "Vehicle Drivetrain")
 #makePie(cr$Luggage.room, "Luggage Room")
 
 # These variables have too many values to make good pie charts! 
-# Try hist or barplot.
+# Instead, try hist or barplot.
 #makePie(cr$RPM, "RPM")
 #makePie(cr$EngineSize, "Engine Size")
 #makePie(cr$Horsepower, "Horsepower")

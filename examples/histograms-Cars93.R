@@ -39,7 +39,8 @@ hist(rpms,
 # ----- Compare histograms to kernel density plots: --------
 
 # Horsepower
-par(mfrow=c(1,3))
+# using the "breaks" parameter to ask for an approximate # of bins
+par(mfrow=c(1,3)) # put three plots on one "page"
 hist(cr$Horsepower, xlab="Max Horsepower", col="green", breaks=15) # col 13; breaks 15 or 18
 hist(cr$Horsepower, col="green")
 plot(density(cr$Horsepower))
@@ -55,19 +56,11 @@ par(mfrow=c(1,2))
 hist(cr$EngineSize, xlab="Engine Size/liters", col="blue", breaks=15) # col 12; breaks 12
 plot(density(cr$EngineSize))
 
-# # Vehicle weight
-# #hist(cr$Weight, xlab="Weight", col="red", breaks=15) # 25; breaks 15 or 18
-# hist(cr$Weight, col="red", xlab="Weight")
-# plot(density(cr$Weight))
-
 # Vehicle Length
 hist(cr$Length, xlab="Vehicle Length/in.", col="yellow", breaks=10) # 19; breaks 10 or 12
 plot(density(cr$Length))
+par(mfrow=c(1,1)) # restore default: one plot per page
 
-# # Vehicle Turn Circle
-# hist(cr$Turn.circle, xlab="Turning circle/ft.", col="purple", breaks=8) # 22
-# plot(density(cr$Turn.circle))
-# par(mfrow=c(1,1))
 
 # -------------- comparing groups: kernel density ------------------
 
@@ -178,9 +171,9 @@ legend(x="topright",
        c("No","Yes"),
        fill=c("blue","red"))
 
-par(mfrow=c(1,1))
+par(mfrow=c(1,1)) # restore default: one plot per page
 
-# # ----------------------------------------
+# ---------- Additional explorations: overplotting kernel density plots ------------
 # 
 # # with sm package: compare MPGs for different drivetrains: kernel density plots
 # 

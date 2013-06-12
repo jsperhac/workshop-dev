@@ -3,29 +3,6 @@
 library(MASS)
 cr = Cars93
 
-# --------------- Cars93 Dotplot ---------------------
-
-# Dotplot: Grouped, Sorted, and Colored
-# Sort by mpg, group and color by cylinder
-x <- cr[order(cr$MPG.city),] # sort by mpg
-#x$cyl <- factor(x$cyl) # it must be a factor
-x$color[x$Cylinders=="3"] <- "red"
-x$color[x$Cylinders=="4"] <- "orange"
-x$color[x$Cylinders=="5"] <- "darkgreen"
-x$color[x$Cylinders=="6"] <- "blue"
-x$color[x$Cylinders=="8"] <- "darkblue"
-x$color[x$Cylinders=="rotary"] <- "purple"
-dotchart(x$MPG.city,
-         labels=x$Make,
-         cex=.5,
-         pch=20,
-         groups= x$Cylinders,
-         main="Gas Mileage for Car Models\ngrouped by # Cylinders",
-         xlab="Miles Per Gallon (city)", 
-         gcolor="black", 
-         color=x$color) 
-
-
 # --------------- Cars93 Dotplot: US only ---------------------
 
 # Dotplot: Grouped, Sorted, and Colored
