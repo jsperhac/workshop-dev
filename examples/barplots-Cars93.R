@@ -1,7 +1,5 @@
 # barplots-Cars93.R
 #
-# Playing with barplots in the Cars93 dataset.
-#
 # -------------- bar plots ---------------
 
 # What can barplots tell us? 
@@ -15,12 +13,15 @@
 #   to adjust y label magnification: cex.axis=0.75
 # ----------------------------------------
 
+# load the Cars93 dataset
 library(MASS)
 cr = Cars93
 
 # -------------- bar plots ---------------
 
-# ---- in the cars dataset, how many cylinders does the typical car have?
+# In the cars dataset, how many cylinders does the typical car have?
+# Compute a contingency table using table() to find out all the counts.
+# Try to answer the question using a barplot.
 
 table(cr$Cylinders)
 
@@ -29,17 +30,17 @@ table(cr$Cylinders)
 # -     --      --    --      --  ----
 # 3     49      2     31      7      1 
 
-# try with "barplot": cylinders
+# try with "barplot": view the car dataset by # cylinders
 counts=table(cr$Cylinders) 
 title="Cars93 Car Distribution by Number of Cylinders"
 colors=rainbow(length(counts))
 barplot(counts, 
-		main=title,
+		    main=title,
         xlab="number of cylinders", 
         ylab="car count from Cars93 dataset",
         col=colors)
 
-# now Type
+# Auto Type barplot
 #counts=table(cr$Type) 
 # better: order Type by Weight:
 type=reorder(cr$Type,cr$Weight)
@@ -52,7 +53,7 @@ barplot(counts,
         ylab="car count from Cars93 dataset",
         col=colors)        
         
-# # now Airbags
+# Airbags
 # counts=table(cr$AirBags) 
 # colors=rainbow(length(counts))      
 # title="Cars93 Car Distribution by Vehicle Airbags"  
@@ -62,7 +63,7 @@ barplot(counts,
 #         ylab="car count from Cars93 dataset",
 #         col=colors)             
 #         
-# # now Origin
+# # Origin
 # counts=table(cr$Origin) 
 # colors=rainbow(length(counts))      
 # title="Cars93 Car Distribution by Origin"  
@@ -72,7 +73,7 @@ barplot(counts,
 #         ylab="car count from Cars93 dataset",
 #         col=colors)    
 #         
-# # now DriveTrain
+# # DriveTrain
 # counts=table(cr$DriveTrain) 
 # colors=rainbow(length(counts))      
 # title="Cars93 Car Distribution by Vehicle DriveTrain"  
@@ -82,7 +83,7 @@ barplot(counts,
 #         ylab="car count from Cars93 dataset",
 #         col=colors)    
 
-# now Manufacturer
+# Manufacturer
 counts=table(cr$Manufacturer) 
 colors=rainbow(length(counts))      
 title="Cars93 Car Distribution by Vehicle Manufacturer"  
@@ -109,14 +110,14 @@ barplot(counts,
 
 # now MPG--we can do this on numeric data. Resembles a histogram.
 # but note that there are gaps at e.g. 35 and 39-40 MPG, etc. Not a histogram!
-counts=table(cr$MPG.highway) 
-colors=heat.colors(length(counts))      
-title="Cars93 Car Distribution by Vehicle MPG, highway"  
-barplot(counts, 
-        main=title,     
-        xlab="MPG, highway", 
-        ylab="car count from Cars93 dataset",
-        col=colors)   
+# counts=table(cr$MPG.highway) 
+# colors=heat.colors(length(counts))      
+# title="Cars93 Car Distribution by Vehicle MPG, highway"  
+# barplot(counts, 
+#         main=title,     
+#         xlab="MPG, highway", 
+#         ylab="car count from Cars93 dataset",
+#         col=colors)   
         
 # ---------- barplots on combination of variables: contingency table --------------
 

@@ -1,4 +1,8 @@
 # scatterplots-Cars93.R
+#
+# A scatterplot has numeric values on both axes.
+# Create a scatterplot to investigate relationships between
+# numeric variables in your dataset.
 
 library(MASS)
 cr = Cars93

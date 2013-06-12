@@ -69,55 +69,38 @@ par(mfrow=c(1,1))
 
 # ------------------------------------------
 
-# boxplots of vehicle weight by type. Ordering the categorical variables for clarity.
+# --------- Vehicle Price by Type -------------
+
+# boxplots of vehicle price by type. Ordering the categorical variables for clarity.
 
 colors=rainbow(length(levels(cr$Type)))
 par(mfrow=c(1,2))
 
 # notice that the categorical variables are ordered alphabetically:
-boxplot(formula=Weight~Type, 
+boxplot(formula=Price~Type, 
         data=cr, 
         cex.axis=0.6,
         las=2,        
         xlab='Vehicle Type', 
-        ylab='Weight/lbs.')
-title("Vehicle weight by type, first try")
+        ylab='Average Price in Thousands of Dollars')
+title("Vehicle price by type, first try")
 
-# using a reorder() call, we can order the vehicle types by weight instead of alphabetical order:
-type=reorder(cr$Type,cr$Weight)
+# using a reorder() call, we can order the vehicle types by price instead of alphabetical order:
+type=reorder(cr$Type,cr$Price)
 colors=rainbow(length(levels(cr$Type)))
-boxplot(formula=Weight~type, 
+boxplot(formula=Price~type, 
         data=cr, 
         cex.axis=0.6,
         las=2,        
         xlab='Vehicle Type', 
-        ylab='Weight/lbs.',
+        ylab='Average Price in Thousands of Dollars',
         col=colors)
-title("Vehicle weight by type, type ordered by weight")
+title("Vehicle weight by price, type ordered by price")
 par(mfrow=c(1,1))
 
-# ---- Violin Plot ----------
 
-# A violin plot is a combination of a box plot and a kernel density plot. 
-# Specifically, it starts with a box plot. It then adds a rotated kernel 
-# density plot to each side of the box plot.
-
-# Here is a violin plot of Weight and Type.
-# library(vioplot)
-# x1 <- cr$Weight[cr$Type=="Small"]
-# x2 <- cr$Weight[cr$Type=="Sporty"]
-# x3 <- cr$Weight[cr$Type=="Compact"]
-# x4 <- cr$Weight[cr$Type=="Midsize"]
-# x5 <- cr$Weight[cr$Type=="Large"]
-# x6 <- cr$Weight[cr$Type=="Van"]
-# vioplot(x1,  x2,  x3, x4, x5, x6, names=levels(cr$Type),
-#         col="blue")
-# title("Violin Plots: Vehicle MPG City and Highway")
-# detach("package:vioplot", unload=TRUE)
-
-# --- box plots with Manufacturer ----
-
-# mention the quartiles we discussed earlier...
+# --- Price with Manufacturer ----
+#
 # appearance tips:
 #     reorder the categorical x value by the y value.
 #
@@ -126,7 +109,7 @@ par(mfrow=c(1,1))
 #         0=parallel, 1=all horizontal, 2=all perpendicular to axis, 3=all vertical
 #
 #     scale the axis labels by 60% of default text size; use cex.axis
-
+#
 # here's our first try:
 #   notice that:
 #       hard to interpret the graph
@@ -197,9 +180,10 @@ boxplot(formula=Wheelbase~mw,
 title("Vehicle Wheelbase with Manufacturer")
 par(mfrow=c(1,1))
 
-# 
-# # note: what's the story with some of these wheelbases? 
+# ------------------- Extra explorations... --------------
+# # Question: what's the story with some of these wheelbases? 
 # # Ford, for instance, has a huge range. Let's look:
+#
 # ford=cr[cr$Manufacturer=="Ford",]
 # summary(ford$Wheelbase)
 # # Ford wheelbases really do range from 90 to 114 inches!
@@ -255,6 +239,25 @@ par(mfrow=c(1,1))
 #         pch=1) # pch gets ignored
 # title("Ford Vehicle Wheelbase with Model")
 # par(mfrow=c(1,1))
+
+# -------- Extra stuff: Violin Plot ----------
+
+# A violin plot is a combination of a box plot and a kernel density plot. 
+# Specifically, it starts with a box plot. It then adds a rotated kernel 
+# density plot to each side of the box plot.
+
+# Here is a violin plot of Weight and Type.
+# library(vioplot)
+# x1 <- cr$Weight[cr$Type=="Small"]
+# x2 <- cr$Weight[cr$Type=="Sporty"]
+# x3 <- cr$Weight[cr$Type=="Compact"]
+# x4 <- cr$Weight[cr$Type=="Midsize"]
+# x5 <- cr$Weight[cr$Type=="Large"]
+# x6 <- cr$Weight[cr$Type=="Van"]
+# vioplot(x1,  x2,  x3, x4, x5, x6, names=levels(cr$Type),
+#         col="blue")
+# title("Violin Plots: Vehicle MPG City and Highway")
+# detach("package:vioplot", unload=TRUE)
 
 
 

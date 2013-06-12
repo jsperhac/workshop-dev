@@ -88,10 +88,8 @@ snowcover <- data.frame(year=c(1970:1979),
 # The built-in data set mammals contains data on body weight versus brain weight for 
 # 62 species of land mammals. Use the command ?mammals to find out about the dataset.
 #
-# a. Use the cor() function to find the Pearson and Spearman correlation coefficients 
-# for body and brain weights. Are they similar? What do these coefficients suggest about 
-# the body and brain weights of land mammals?
-
+# a. Use the cor() function to find the correlation coefficient for body and brain weights. 
+# What does this coefficient suggest about the body and brain weights of land mammals?
 
 # b. Plot the data using the plot command, and label the plot and axes (include units). 
 # You should be unsatisfied with this plot. Next, plot the logarithm (log) of each 

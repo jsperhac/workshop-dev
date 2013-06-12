@@ -3,7 +3,7 @@
 # Playing with piecharts in the Cars93 dataset.
 #
 # What can pie charts tell us? 
-# 	- a general graphical sense of the contents of some single variable in our dataset
+# 	- a general graphical sense of the contents and distribution of some single variable in our dataset
 # 	- establish whether we need to perform some binning for histograms
 # 	- assist in data exploration
 #
@@ -18,7 +18,11 @@ cr = Cars93
 
 # --------- super basic pie chart -----------------
 
-# as basic as possible! Please label me!
+# to create a pie chart we need to compute the counts of distinct values of our variable.
+# use a contingency table to count up numbers of cars having certain numbers of cylinders:
+table(cr$Cylinders)
+
+# Now call the pie() function. This one is as basic as possible! Please label me!
 pie(table(cr$Cylinders))
 
 # plain jane: pie chart of Cylinders (categorical) from Cars93 data
@@ -29,14 +33,6 @@ pie(slices,
     col=rainbow(length(lbls)),
     main="Example Piechart: Number of Cylinders in Auto Dataset") 
 
-# plain jane: pie chart of Passengers (numeric) from Cars93 data
-slices <-table(cr$Passengers)
-lbls <- levels(factor(cr$Passengers))
-pie(slices, 
-    labels = lbls, 
-    col=rainbow(length(lbls)),
-    main="Example Piechart: Maximum Number of Passengers in Auto Dataset") 
-        
 # --------- pie chart with computed percentages -----------------  
 #      
 # pie chart of Cylinders from Cars93 data        
@@ -51,15 +47,16 @@ pie(slices,
     col=rainbow(length(lbls)),
     main="Example Piechart: Number of Cylinders in Cars93 Dataset") 
 
-# --------------- Create a piechart function ------------------
+# --------------- Piechart function with percentages ------------------
 
 # Here is a general makePie() function, plus calls for a number
-# of different variables in the dataset:
+# of different variables in the Cars93 dataset:
 
 # ----------------------------------------------------
 # makePie()
 #   col: column (numeric or categorical) in Cars93 dataset
 #   name: string name to appear in title of piechart
+# plots pie chart with percents calculated for each slice
 # ----------------------------------------------------
 makePie <- function(col, name) {
   
@@ -82,22 +79,21 @@ makePie <- function(col, name) {
   
   # plot it:
 	p <- pie(slices,
-          labels = lbls, 
-          col=rainbow(length(lbls)),
+          labels = lbls,             # add the labels
+          col=rainbow(length(lbls)), # assign fancy colors
 		      main=paste(name, "in Cars93 Dataset")) 
 }
 
 # a few examples:
-#makePie(cr$Passenger, "Max Passengers")
-#makePie(cr$Cylinders, "# Cylinders")
 makePie(cr$Type, "Vehicle Type")
-makePie(cr$AirBags, "Vehicle Airbags")
-makePie(cr$Origin, "Vehicle Origin")
-#makePie(cr$Man.trans.avail, "Manual Transmission Available")
-
 makePie(cr$DriveTrain, "Vehicle Drivetrain")
+#makePie(cr$Passenger, "Max Number of Passengers")
+#makePie(cr$Cylinders, "# Cylinders")
+#makePie(cr$AirBags, "Vehicle Airbags")
+#makePie(cr$Origin, "Vehicle Origin")
+#makePie(cr$Man.trans.avail, "Manual Transmission Available")
 # makePie(cr$Manufacturer, "Vehicle Manufacturer")
-makePie(cr$Turn.circle, "Turn Circle")
+#makePie(cr$Turn.circle, "Turn Circle")
 #makePie(cr$Luggage.room, "Luggage Room")
 
 # These variables have too many values to make good pie charts! 
