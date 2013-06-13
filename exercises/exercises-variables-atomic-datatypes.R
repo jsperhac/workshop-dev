@@ -3,7 +3,7 @@
 # ==================================
 
 # Using your R editor, load this file and edit it, adding R code to complete each exercise.
-# Save it.
+# Save the file. Then you'll have a record of how you solved the exercises.
 
 # TIPS:
 # 	Use comments (#) in your code, if you need to explain anything.
@@ -19,7 +19,7 @@
 # r = exp(2)         	# exponential function
 # q = abs(3 - 7)     	# Absolute value of (3-7)
 # y = "TRUE"    			
-# r = FALSE
+# x = FALSE
 # z = NA
 #
 # b. Using R, find and print the class of each variable. What do you notice about variable y?
@@ -27,18 +27,23 @@
 # c. Using R, find and print the logical opposite of each variable. Again, what do you notice
 # about variable y?
 
+# When done with the exercise, use the broom icon to clear your RStudio workspace.
+
 # ---------------------------------
 
 # 2. Logical variables
 #
 # Perform the following in R:
-# a. Define variable u as logical True, v as logical False.
+# a. Define variable u as logical True, v as logical False. Hint: these reserved words must
+# be all capitals (case is important in R).
 
 # b. In R, determine whether u and v are both true.
 
 # c. In R, determine whether at least one of u OR v is true.
 
 # d. In R, find the opposite of v. 
+
+# When done with the exercise, use the broom icon to clear your RStudio workspace.
 
 # ---------------------------------
 
@@ -51,6 +56,8 @@
 # command line to bring up the help page.
 
 # c. Print the new variable. Print its type (use the function class()).
+
+# When done with the exercise, use the broom icon to clear your RStudio workspace.
 
 # ---------------------------------
 

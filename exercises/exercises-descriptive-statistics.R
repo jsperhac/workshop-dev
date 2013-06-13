@@ -3,7 +3,7 @@
 # ==================================
 #
 # Using your R editor, load this file and edit it, adding R code to complete each exercise.
-# Save it.
+# Save it. Then you'll have a record of how you solved the exercises.
 #
 # TIPS:
 #   - Use comments (#) in your code, if you need to explain anything.
@@ -39,11 +39,11 @@
 # -------------------------------
 
 # 1. Suppose you keep track of your mileage each time you fill up your car's gas tank. 
-# At your last 8 fill-ups, the mileage was:
-#     65311 65624 65908 66219 66499 66821 67145 67447
-#
-# a. Enter these numbers into an R vector. Use the function diff() on the data. What is the result?
-#
+# At your last 8 fill-ups, the mileage was as follows:
+miles =  c(65311, 65624, 65908, 66219, 66499, 66821, 67145, 67447)
+
+# a. Use the function diff() on the miles data and assign the result to a variable called x. 
+# What is the type of the result? What does it mean?
 
 # b. Use the function length() to find the lengths of the miles and x vectors. 
 
@@ -53,34 +53,36 @@
 # d. Run the following command to create a boxplot of the miles between fill-ups. The bottom of the box 
 # is Q1, the top of the box is Q3, the line in the center of the box is the median, and the "whiskers" 
 # extend to the min and max:
-boxplot(x, ylab="Distance between fill-ups/miles", main="Milage at fill-ups")
+boxplot(x, ylab="Distance between fill-ups, in miles", main="Milage at fill-ups")
 
 # --------------------------------
 
 # 2. You track your commute times for two weeks (10 days) and you find the following times in minutes:
 #       17 16 20 24 22 15 21 15 17 22
 #
-# a. Enter this into a vector called commute. Use R functions to find the longest and shortest commute 
-# times, the average, and a statistical summary.
+# a. Enter this data into a vector called commute. Use R functions to find the longest and shortest  
+# commute times, the average, and a statistical summary.
 
-#
-# b. Run the following command to create a boxplot of the miles between fill-ups. The bottom of the box 
+# b. Run the following command to create a boxplot of the commute times. The bottom of the box 
 # is Q1, the top of the box is Q3, the line in the center of the box is the median, and the "whiskers" 
 # extend to the min and max:
-boxplot(x, ylab="Commute time/minutes", main="Original commute data")
-#
+boxplot(commute, ylab="Commute time/minutes", main="Original commute data")
+
+
 # c. Suppose the 24 was a mistake; it should have been 18. How can you fix this? Do so, and then find 
 # the new average. Hint: Index into the vector, then use an assignment statement to fix this mistake.
 
-#
+
 # d. Now that you have fixed the datapoint, re-run the boxplot and the summary command. 
 summary(commute)
-boxplot(x, ylab="Commute time/minutes", main="Corrected commute data")
-#
-# e. How many times was your commute 20 minutes or more? To answer this you can try (if you called your 
-# vector commute):
+boxplot(commute, ylab="Commute time/minutes", main="Corrected commute data")
+
+
+# e. How many times was your commute 20 minutes or more? To answer this you can try:
 #   sum( commute >= 20 )
-#
+# How does this work?
+
+
 # f. What percent of your commutes are less than 17 minutes? How can you answer this with R?
 
 # ----------------------------------------------------------

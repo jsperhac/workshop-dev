@@ -22,13 +22,13 @@
 # Does this confirm or change your explanation? What does paste()
 # do?
 #
-# Is it possible to call the function with an array or other data
+# Is it possible to call the function with an vector or other data
 # structure? With a non-numeric value? Why or why not? (Try it!)
 # What happens?
 
 drivingTest = function(age) {
   
-  if (is.numeric(age)) {
+  if ( is.numeric(age) & (!is.vector(age)) ) {
     
     if (age >= 17) {
       status ="You can drive!";
@@ -43,7 +43,7 @@ drivingTest = function(age) {
     print(paste("You are", age, "years old.", status));
     
   } else {
-    print("Please call this function with a numeric input.");
+    print("Please call this function with a single numeric input.");
   }    
 }
 
@@ -53,21 +53,26 @@ drivingTest(age);
 # ------------------------------
 # 2. Miles to Kilometers Conversion
 # 
-# Write a simple function that accepts a single numeric value or an array,
-# in miles, and converts the value(s) to kilometers.
+# Write a simple function that accepts a numeric value, in miles, and 
+# converts the value(s) to kilometers.
 #
 # Use the following information: 
 #   kilometers = (8/5) * miles
 # 
-# Test the function with the following array, and print the results.
-miles = c(50, 100, 200, 275);
+# Test the function with the following vector, and print the results.
+miles = c(50, 100, 200, 275)
+
+# What is the type (class) of the output, given the input vector miles?
+
+# What is the type (class) of the output if you supply a single numeric value?
+# What about a single character value?
 
 # ------------------------------
 # 3. Average and Standard Deviation
 #
 # Write a simple function that prints out the mean and standard deviation
 # of an input set of numbers. Test the result on the body and brain columns of
-# the dataset mammals (mammals$body in kg, mammals$brain in g).
+# the dataset mammals (mammals$body in units of kg, mammals$brain in units of g).
 #
 # Hints: 
 #   - The native R function mean() can be used for the mean.

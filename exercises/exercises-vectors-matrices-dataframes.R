@@ -3,7 +3,7 @@
 # ==================================
 #
 # Using your R editor, load this file and edit it, adding R code to complete each exercise.
-# Save it.
+# Save it. Then you'll have a record of how you solved the exercises.
 #
 # TIPS:
 #   - Use comments (#) in your code, if you need to explain anything.
@@ -16,8 +16,8 @@
 
 # I. Accessing data in vectors
 #
-# There are several ways to extract data from a vector. Here is a summary using both slicing and 
-# extraction by a logical vector:
+# There are several ways to extract data from a vector. Here is a summary showing both slicing and 
+# extraction by conditionals (logic):
 # 
 # length(x)     # how many elements?
 # x[2]          # return ith element; (i = 2)
@@ -108,7 +108,9 @@ s[1:10,"Gender"]
 
 # -------------------------------------------------------------------
 
-# 3. In this exercise you will create a subset of the data frame that 
+# ---- Challenge exercises ----
+
+# 5. In this exercise you will create a subset of the data frame that 
 # contains no NAs. In other words, we will create a new data frame that
 # excludes all rows that are incomplete (have NAs) for any of the measures 
 # Gender, Hand, Height, and Age. 
@@ -156,7 +158,7 @@ htIdx=is.na(s$Height)
 
 # -------------------------------------------------------------------
 
-# 4. Find the mean and range for Age, on both the original dataset and the new dataset. 
+# 6. Find the mean and range for Age, on both the original dataset and the new dataset. 
 #   Ensure you do not get NA for any answer (Hint: use na.rm=TRUE, or summary(), on the 
 #   original dataset)
 #
