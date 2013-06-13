@@ -90,7 +90,7 @@ library(MASS) # loads the dataset called "mammals"
 
 # 4. In the survey dataset, convert all heights to inches ("Imperial") from Metric.
 
-# Import the excerpted survey data frame.
+# Import the excerpted survey data frame by running the following load code:
 library(MASS)
 
 loadS <- function(survey) {
@@ -110,6 +110,8 @@ loadS <- function(survey) {
 }
 
 s = loadS(survey);
+
+# --- end load code ---
 
 # -------------------------------------------------------------------
 
@@ -133,12 +135,12 @@ s = loadS(survey);
 
 # -------------------------------------------------------------------
 
-# 5. Convert all heights in the data frame to inches ("Imperial") from Metric.
+# 5. Demo: Convert all heights in the data frame to inches ("Imperial") from Metric.
 # one inch = 2.54 cm
 #
-# ----- There's a very "R" way to do this: ------
-
-# Construct a vector of the heights that are labeled 'Metric'. 
+# Implemented as a demo: look over it, play with it, understand it!
+#
+# First, construct a vector of the heights that are labeled 'Metric'. 
 #
 # To get this:
 # We take the Heights column from the data frame (s$Height),
@@ -155,8 +157,8 @@ s$HtUnit[s$HtUnit=='Metric']= "Imperial";
 
 # To make this into an R-style function:
 convertToImperialR <- function(s) {
-  s$Height[s$HtUnit=='Metric']= s$Height[s$HtUnit=='Metric']/2.54;
-  s$HtUnit[s$HtUnit=='Metric']= "Imperial"; 
+  s$Height[s$HtUnit=="Metric"]= s$Height[s$HtUnit=="Metric"]/2.54;
+  s$HtUnit[s$HtUnit=="Metric"]= "Imperial"; 
   return(s);
 }
 
@@ -166,80 +168,19 @@ sImp1 = convertToImperialR(s)
 
 # -------------------------------------------------------------------
 
-# Adapt your existing function to accept a second
+# 6. Use the summary() function to find the mean and range for Height,
+#   using the new, converted Imperial ("inches") dataset.
+
+# -------------------------------------------------------------------
+
+# 7. Extra credit
+
+# Adapt the existing function to accept a second
 # argument, Metric or Imperial. If "Imperial" is passed,
 # then convert all heights labeled "Metric" to "Imperial".
 # If "Metric" is passed, convert all heights labeled 
 # "Imperial" to "Metric".
+#
 # Ensure your function checks for NAs before proceeding.
 
-convertHeight <- function(df, unit) {
-  df = na.omit(df);
-  
-  if (unit == "Imperial") {
-    
-    # Convert to Imperial, divide cm/2.54:
-    s$Height[s$HtUnit=='Metric']= s$Height[s$HtUnit=='Metric']/2.54;
-    s$HtUnit[s$HtUnit=='Metric']= "Imperial";    
-    
-  } else {
-    
-    # Convert to Metric, multiply in*2.54:
-    s$Height[s$HtUnit=='Imperial']= s$Height[s$HtUnit=='Imperial']*2.54;
-    s$HtUnit[s$HtUnit=='Imperial']= "Metric";        
-  }
-  return(s);
-}
-  
-# Let's test this:
-s = loadS(survey);
-sMetric = convertHeight(s,'Metric')
-sImperial = convertHeight(s,'Imperial')
-  
-# -------------------------------------------------------------------
 
-# 6. Use the summary() function to find the mean and range for Height,
-#   using the new, converted Imperial ("inches") dataset.
-
-summHeight = summary(sImperial$Height)
-
-# ---- A note for the curious ------
-
-# There are several ways to approach this conversion problem. Here is 
-# a loop-based way that accomplishes the same end. Study it to understand 
-# what it does, then adapt it to take a units argument, as above.
-
-# Loop based way:
-# Write a function that accepts a data frame
-# as an argument, and returns a new data frame
-# containing converted values. The function should
-# convert metric values to imperial. The new data
-# frame should contain correct labels for the units.
-
-# Loop-based algorithm:
-# pass entire data frame to function
-# for each row in the data frame,
-# if it's metric, convert to imperial, write new value
-# convert label to imperial
-# otherwise skip
-# return the new data frame
-
-convertToImperial <- function(fr) {
-  
-  # for each row in the data frame,
-  for (i in 1:dim(fr)[1]) {
-    
-    # Test: if it's metric, convert to imperial, write new value
-    if (fr[i,]$HtUnit == "Metric") {
-      fr[i,]$Height = (fr[i,]$Height / 2.54);
-      
-      # convert label to imperial
-      fr[i,]$HtUnit = "Imperial";
-    }
-  }
-  # return the data frame
-  return(fr);
-}
-
-imperial = convertToImperial(s);
-summary(imperial);

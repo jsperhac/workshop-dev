@@ -62,14 +62,14 @@
 # a. Use the following data frame in R for the snow cover exercises:
 snowcover <- data.frame(year=c(1970:1979),
                         snow.cover=c(6.5, 12.0, 14.9, 10.0, 10.7, 7.9, 21.9, 
-                                     12.5, 14.5, 9.2))
+                                     12.5, 14.5, 9.2)
+                        )
 
 # b. Which is the dependent variable, and which is the independent variable? Which axis should
 # each be plotted on?
 
 
 # c. Plot snow.cover versus year. Label your axes and the plot.
-# 
 
 
 # d. Use the hist() command to plot a histogram of the snow cover values. Label your axes and the plot. 
