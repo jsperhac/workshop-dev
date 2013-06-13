@@ -22,14 +22,11 @@
 # 
 # stretch 46 54 48 50 44 42 52
 # distance 148 182 173 166 109 141 166
-# 
-# a. Use the function data.frame() to create a data frame containing these data. 
-# Give the data frame the name elasticband.
-# 
-# Hint: Use the function c() to create column vectors, and data.frame() to create the data frame.
-#     Make sure you name the data frame's columns, e.g.
-#         data.frame(name1=c(1,2,3), name2=c(4,5,6))
 
+# a. Use the following data frame in R for the exercise:
+elasticband <- data.frame(stretch = c(46, 54, 48, 50, 44, 42, 52),
+                          distance = c(148, 182, 173, 166, 109, 141, 166)
+                          )
 
 # b. Which is the dependent variable, and which is the independent variable? Which axis should
 # each be plotted on?
@@ -89,13 +86,15 @@ snowcover <- data.frame(year=c(1970:1979),
 # 62 species of land mammals. Use the command ?mammals to find out about the dataset.
 # First, load the dataset from the MASS package, using the command:
 data(mammals, package="MASS")
-#
+
 # a. Use the cor() function to find the correlation coefficient for body and brain weights. 
 # What does this coefficient suggest about the body and brain weights of land mammals?
+
 
 # b. Plot the data using the plot command, and label the plot and axes (include units). 
 # You should be unsatisfied with this plot. Next, plot the logarithm (log) of each 
 # variable; does that make a difference?
+
 
 # c. Overlay the log-log plot with a linear model. Are you satisfied with the fit?
 #     Hint: the linear model takes the form lm(y~x). To overplot, call abline() on the linear model.
@@ -109,11 +108,15 @@ data(mammals, package="MASS")
 #
 # For these exercises, load the Cars93 dataset from the MASS package. You can adapt some of
 # the plot examples from class to create these plots.
+
+# load the data:
 data(Cars93, package="MASS")
 cr=Cars93
+
 #
 # a. Make a histogram and density plot of Engine Size (displacement), plotted on the same
 #   'page'. Label the axes on the histogram. Compare the histogram and density plots.
+
 
 # b. Make a boxplot of the Cars93 dataset drivetrain types with engine RPM. Label the axes and the plot.
 #   Use color to distinguish the categorical variable values.
@@ -122,6 +125,7 @@ cr=Cars93
 #   What do the ends of the boxes and the dotted lines mean? Are there any outliers? Can you find
 #   the cars represented by them?
 
+
 # c. For this exercise, don't worry about labels or nice presentation; concentrate on comparing the
 #    different plot types:
 #
@@ -129,14 +133,17 @@ cr=Cars93
 #     dataset. Which representation makes more sense to you? Would a pie chart be
 #     an effective way to represent this information about the Cars93 dataset?
 
+
 # d. Make a barplot of the Cars93 dataset by origin (USA/non USA) broken down by manual transmission
 #   availability.
 #   Don't forget to include a legend that indicates the color coding of the categorical variables,
 #   and label your axes and the plot appropriately.
 #   Can you conclude anything about whether Americans seem to prefer a manual or automatic transmission?
 
+
 # e. Create a piechart of Vehicle Airbags from the Cars93 dataset. Display each category's percentage 
 #   of the total dataset. Include a plot title.
+
 
 # -------------------------------------------------------------
 
@@ -151,7 +158,7 @@ cr=Cars93
 # 
 # a. The relationship between fat and vitamins
 # b. the relationship between carbohydrates and sugars
-# c. the relationship between fibre and manufacturer
+# c. the relationship between fiber and manufacturer
 # d. the relationship between sodium and sugars
 # 
 # Are there other relationships you can predict and investigate?
