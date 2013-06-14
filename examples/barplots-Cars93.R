@@ -48,7 +48,7 @@ counts=table(type)
 colors=rainbow(length(counts))        
 title="Cars93 Car Distribution by Vehicle Type"
 barplot(counts, 
-		main=title,
+		    main=title,
         xlab="Vehicle Type", 
         ylab="car count from Cars93 dataset",
         col=colors)        
@@ -75,15 +75,16 @@ type=reorder(cr$Type,cr$Weight)
 counts=table(cr$Man.trans.avail, type) 
 title="Cars93 Car Distribution by Vehicle Type and Manual Transmission Available"
 barplot(counts, 
-		main=title,
+		    main=title,
         xlab="Vehicle Type", 
         ylab="car count from Cars93 dataset",
         col=c("red","darkblue"),
-        #legend=levels(cr$Man.trans.avail)
+        #legend=levels(cr$Man.trans.avail) # to specify legend in barplot call
         )
 legend(x="topright",                # location for legend
-       title="Manual Transmission Available?",   # title for legend
+       title="Man. Trans. Available?",   # title for legend
        levels(cr$Man.trans.avail),               # names in legend
+       bty="n",                                  # box type to draw around legend
        fill=c("red","darkblue"))                 # colors for legend
                  
         
@@ -98,9 +99,9 @@ barplot(counts,
         ylab="car count from Cars93 dataset",
         col=rainbow(length(table(cr$Passengers))))
         #legend=levels(factor(cr$Passengers)))       
-legend(x="topright",                # location for legend
+legend(x="topright",                      # location for legend
        title="Max # Passengers",          # title for legend
-       levels(factor(cr$Passengers)), # names in legend
+       levels(factor(cr$Passengers)),     # names in legend
        fill=rainbow(length(table(cr$Passengers)))) # colors for legend
 
       

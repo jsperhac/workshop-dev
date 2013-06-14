@@ -84,13 +84,45 @@ miles = c(50, 100, 200, 275)
 #
 library(MASS) # loads the dataset called "mammals"
 
+# ------------------------------
+
+# 4. apply() function
+#
+# The apply() family of functions can be used to call some other function multiple times, and in doing
+# so call it with several different arguments. In this exercise we will explore the use of the
+# sapply() function. We will use it to call several R functions on a predefined dataset, and
+# look at the output.
+
+# Consider that you can use the apply() family on a native R function, or equally on a function you wrote 
+# yourself.
+
+# a. First, create the sample dataset of US car data by running the following:
+data(car90, package = "rpart")
+US = car90[car90$Country=="USA", ]    # Only use American Cars
+US = US[ ,c(10,12,13,14,17,34)]       # Only use specified columns
+US = na.omit(US)                      # Remove NAs
+
+# b. Call head(), View(), or str() on the US dataset, to get a sense of the contents.
+# How many columns does it have? What are their types?
+
+# c. Now, call the sapply function on the US dataset, to apply the mean function to it.
+
+# Hint: Use the syntax sapply(US, mean). Do you agree that this is equivalent to running
+# mean(US$HP), followed by mean(US$Height), followed by the mean function of each other
+# column in the US data frame? Can you see the use of the apply() family?
+
+# d. Call the sapply function on the US dataset and the range function.
+
+# ------------------------------
 
 # Function exercise in the survey dataset:
 # =====================================================
 
-# 4. In the survey dataset, convert all heights to inches ("Imperial") from Metric.
+# 5. In the survey dataset, convert all heights to inches ("Imperial") from Metric.
 
 # Import the excerpted survey data frame by running the following load code:
+
+# --- begin load code ---
 library(MASS)
 
 loadS <- function(survey) {
@@ -110,7 +142,6 @@ loadS <- function(survey) {
 }
 
 s = loadS(survey);
-
 # --- end load code ---
 
 # -------------------------------------------------------------------
@@ -135,7 +166,7 @@ s = loadS(survey);
 
 # -------------------------------------------------------------------
 
-# 5. Demo: Convert all heights in the data frame to inches ("Imperial") from Metric.
+# 6. Demo: Convert all heights in the data frame to inches ("Imperial") from Metric.
 # one inch = 2.54 cm
 #
 # Implemented as a demo: look over it, play with it, understand it!
@@ -168,12 +199,12 @@ sImp1 = convertToImperialR(s)
 
 # -------------------------------------------------------------------
 
-# 6. Use the summary() function to find the mean and range for Height,
+# 7. Use the summary() function to find the mean and range for Height,
 #   using the new, converted Imperial ("inches") dataset.
 
 # -------------------------------------------------------------------
 
-# 7. Extra credit
+# 8. Extra credit
 
 # Adapt the existing function to accept a second
 # argument, Metric or Imperial. If "Imperial" is passed,

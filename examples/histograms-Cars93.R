@@ -62,116 +62,131 @@ plot(density(cr$Length))
 par(mfrow=c(1,1)) # restore default: one plot per page
 
 
-# -------------- comparing groups: kernel density ------------------
-
-# Compare MPG distributions for cars with different numbers of cylinders
-library(sm) # need a special library, "Smoothing methods for...density estimation"
-
-par(mfrow=c(1,2))
-
-# ------------------------------
-
-# compare MPGs for different transmissions: kernel density plots
-
-# plot the densities:
-sm.density.compare(cr$MPG.highway, as.integer(cr$Man.trans.avail), xlab="MPG, highway")
-title(main="Highway MPG Distribution by Man.trans.avail")
-
-# add legend to indicate identities of line colors
-cl = levels(factor(cr$Man.trans.avail))
-colfill<-c(2:(2+length(cl)))
-legend(x="topright", cl, fill=colfill) 
-
-# ---
-
-# Same comparison plot, for city MPG:
-# plot the densities:
-sm.density.compare(cr$MPG.city, as.integer(cr$Man.trans.avail), xlab="MPG, city")
-title(main="City MPG Distribution by Man.trans.avail")
-
-# add legend to indicate identities of line colors
-cl = levels(factor(cr$Man.trans.avail))
-colfill<-c(2:(2+length(cl)))
-legend(x="topright", cl, fill=colfill) 
-
-# ---- without sm library: ---
-
-# note that using density() calls allows us to scale the individual vectors by
-# proportion of the dataset (see the weight parameter)
-
-par(mfrow=c(1,2))
-
-# --- highway ---
-
-# x and y limits are found by experimentation:
-yl=c(0,0.06)
-xl=c(15,55)
-
-# Subset the MPG.highway column on whether the Man.trans is available or not:
-manTrans =   cr$MPG.highway[which(cr$Man.trans.avail=="Yes")]
-noManTrans = cr$MPG.highway[which(cr$Man.trans.avail=="No")]
-
-# weight each point according to the prevalence of its group in the dataset
-lm = length(manTrans)
-ln = length(noManTrans)
-len = lm+ln
-
-# now plot one subset (no man trans):
-plot(density(noManTrans, weights=rep(1/len,ln)),
-     col="blue",
-     main="Highway MPG Distribution by Man.trans.avail",
-     xlab="MPG, highway", 
-     ylim=yl,
-     xlim=xl)
-
-# do the overplotting with the other subset
-lines(density(manTrans, weights=rep(1/len,lm)),
-      col="red",
-      ylim=yl,
-      xlim=xl)
-
-grid(col="grey") # add a grid
-
-# add a legend to identify each line clearly
-legend(x="topright",
-       title="Manual trans. available?",
-       c("No","Yes"),
-       fill=c("blue","red"))
-
-# --- city ---
-
-# Subset the MPG.city column on whether the Man.trans is available or not:
-manTrans =   cr$MPG.city[which(cr$Man.trans.avail=="Yes")]
-noManTrans = cr$MPG.city[which(cr$Man.trans.avail=="No")]
-
-# weight each point according to the prevalence of its group in the dataset
-lm = length(manTrans)
-ln = length(noManTrans)
-len = lm+ln
-
-# now plot one subset (no man trans):
-plot(density(noManTrans, weights=rep(1/len,ln)),
-     col="blue",
-     main="City MPG Distribution by Man.trans.avail",
-     xlab="MPG, city", 
-     ylim=yl,
-     xlim=xl)
-
-# do the overplotting with the other subset
-lines(density(manTrans, weights=rep(1/len,lm)),
-      col="red",
-      ylim=yl,
-      xlim=xl)
-
-grid(col="grey") # add a grid
-
-# add a legend to identify each line clearly
-legend(x="topright",
-       title="Manual trans. available?",
-       c("No","Yes"),
-       fill=c("blue","red"))
-
-par(mfrow=c(1,1)) # restore default: one plot per page
+# # -------------- EXTRA OPTION: comparing groups: kernel density ------------------
+# 
+# # Compare MPG distributions for cars with different numbers of cylinders
+# library(sm) # need a special library, "Smoothing methods for...density estimation"
+# 
+# par(mfrow=c(1,2))
+# 
+# # ------------------------------
+# 
+# # compare MPGs for different transmissions: kernel density plots
+# 
+# # plot the densities:
+# cv = c("green","blue")
+# sm.density.compare(cr$MPG.highway, 
+#                    as.integer(cr$Man.trans.avail), 
+#                    xlab="MPG, highway",
+#                    col=cv)
+# title(main="Highway MPG Distribution by Man.trans.avail")
+# 
+# # add legend to indicate identities of line colors
+# cl = levels(factor(cr$Man.trans.avail))
+# legend(x="topright", 
+#        cl, 
+#        fill=cv,
+#        title="Man Trans Avail?") 
+# 
+# # ---
+# 
+# # Same comparison plot, for city MPG:
+# # plot the densities:
+# cv = c("green","blue")
+# sm.density.compare(cr$MPG.city, 
+#                    as.integer(cr$Man.trans.avail), 
+#                    xlab="MPG, city",
+#                    col=cv)
+# title(main="City MPG Distribution by Man.trans.avail")
+# 
+# # add legend to indicate identities of line colors
+# cl = levels(factor(cr$Man.trans.avail))
+# legend(x="topright", 
+#        title="Man Trans Avail?",
+#        cl, 
+#        fill=cv) 
+# 
+# # -------------
+# 
+# 
+# # ---- without sm library: ---
+# 
+# # note that using density() calls allows us to scale the individual vectors by
+# # proportion of the dataset (see the weight parameter)
+# 
+# par(mfrow=c(1,2))
+# 
+# # --- highway ---
+# 
+# # x and y limits are found by experimentation:
+# yl=c(0,0.06)
+# xl=c(15,55)
+# 
+# # Subset the MPG.highway column on whether the Man.trans is available or not:
+# manTrans =   cr$MPG.highway[which(cr$Man.trans.avail=="Yes")]
+# noManTrans = cr$MPG.highway[which(cr$Man.trans.avail=="No")]
+# 
+# # weight each point according to the prevalence of its group in the dataset
+# lm = length(manTrans)
+# ln = length(noManTrans)
+# len = lm+ln
+# 
+# # now plot one subset (no man trans):
+# plot(density(noManTrans, weights=rep(1/len,ln)),
+#      col="blue",
+#      main="Highway MPG Distribution by Man.trans.avail",
+#      xlab="MPG, highway", 
+#      ylim=yl,
+#      xlim=xl)
+# 
+# # do the overplotting with the other subset
+# lines(density(manTrans, weights=rep(1/len,lm)),
+#       col="red",
+#       ylim=yl,
+#       xlim=xl)
+# 
+# grid(col="grey") # add a grid
+# 
+# # add a legend to identify each line clearly
+# legend(x="topright",
+#        title="Manual trans. available?",
+#        c("No","Yes"),
+#        fill=c("blue","red"))
+# 
+# # --- city ---
+# 
+# # Subset the MPG.city column on whether the Man.trans is available or not:
+# manTrans =   cr$MPG.city[which(cr$Man.trans.avail=="Yes")]
+# noManTrans = cr$MPG.city[which(cr$Man.trans.avail=="No")]
+# 
+# # weight each point according to the prevalence of its group in the dataset
+# lm = length(manTrans)
+# ln = length(noManTrans)
+# len = lm+ln
+# 
+# # now plot one subset (no man trans):
+# plot(density(noManTrans, weights=rep(1/len,ln)),
+#      col="blue",
+#      main="City MPG Distribution by Man.trans.avail",
+#      xlab="MPG, city", 
+#      ylim=yl,
+#      xlim=xl)
+# 
+# # do the overplotting with the other subset
+# lines(density(manTrans, weights=rep(1/len,lm)),
+#       col="red",
+#       ylim=yl,
+#       xlim=xl)
+# 
+# grid(col="grey") # add a grid
+# 
+# # add a legend to identify each line clearly
+# legend(x="topright",
+#        title="Manual trans. available?",
+#        c("No","Yes"),
+#        fill=c("blue","red"))
+# 
+# par(mfrow=c(1,1)) # restore default: one plot per page
 
 # ---------- Additional explorations: overplotting kernel density plots ------------
 # 
@@ -180,23 +195,22 @@ par(mfrow=c(1,1)) # restore default: one plot per page
 # par(mfrow=c(1,2))
 # 
 # # plot the densities:
-# sm.density.compare(cr$MPG.highway, as.integer(cr$DriveTrain), xlab="MPG, highway")
+# cv=c("green", "blue","red")
+# sm.density.compare(cr$MPG.highway, as.integer(cr$DriveTrain), xlab="MPG, highway", col=cv)
 # title(main="Highway MPG Distribution by Drivetrain")
 # 
 # # add legend to indicate identities of line colors
 # cl = levels(factor(cr$DriveTrain))
-# colfill<-c(2:(2+length(cl)))
-# legend(x="topright", cl, fill=colfill) 
+# legend(x="topright", cl, fill=cv) 
 # 
 # # compare MPGs for drivetrain
 # # plot the densities:
-# sm.density.compare(cr$MPG.city, as.integer(cr$DriveTrain), xlab="MPG, city")
+# sm.density.compare(cr$MPG.city, as.integer(cr$DriveTrain), xlab="MPG, city", col=cv)
 # title(main="City MPG Distribution by Drivetrain")
 # 
 # # add legend to indicate identities of line colors
 # cl = levels(factor(cr$DriveTrain))
-# colfill<-c(2:(2+length(cl)))
-# legend(x="topright", cl, fill=colfill) 
+# legend(x="topright", cl, fill=cv) 
 # 
 # par(mfrow=c(1,1))
 # 
