@@ -28,7 +28,7 @@
 
 drivingTest = function(age) {
   
-  if ( is.numeric(age) & (!is.vector(age)) ) {
+  if ( is.numeric(age) & ( length(age)==1 ) ) {
     
     if (age >= 17) {
       status ="You can drive!";
