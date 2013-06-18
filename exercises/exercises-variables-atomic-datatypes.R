@@ -66,14 +66,15 @@
 # Calculate the Fahrenheit temperatures that correspond to 20 to 25 degrees Celcius, 
 # using the steps below.
 
-celsius <- c(20:25)	# sets a vector variable to contain the integers 20 through 25
+celsius = c(20:25)	# sets a vector variable to contain the integers 20 through 25
 
 # a. Complete the assignment for the fahrenheit variable. Use the formula:
-# 		degrees_fahrenheit = (9/5) * degrees_celsius + 32
-# fahrenheit <- 
+# 		fahrenheit = (9/5) * celsius + 32
+#
+# fahrenheit = 
 
 # b. Uncomment this line to create a data frame containing the temperature conversion:
-# conversion <- data.frame(Celsius=celsius, Fahrenheit=fahrenheit)
+# conversion = data.frame(Celsius=celsius, Fahrenheit=fahrenheit)
 
 # c. Print the temperature conversion.
 

@@ -16,15 +16,23 @@
 #
 # 1. Driving Test
 #
-# Examine the drivingTest() function below, and decide what it does.
+# a. Examine the drivingTest() function below, and decide what it does.
 #
-# Next, call the function several times with different inputs. 
+# b. Next, call the function several times with different inputs. 
 # Does this confirm or change your explanation? What does paste()
 # do?
 #
-# Is it possible to call the function with an vector or other data
+# c. Is it possible to call the function with an vector or other data
 # structure? With a non-numeric value? Why or why not? (Try it!)
 # What happens?
+#
+# d. Create a vector of ages called ages, and call the drivingTest
+# function using the sapply() function. Example: ages = c(12, 16, 18)
+# Syntax Tip: try the following:
+#
+#     > sapply(ages, drivingTest)
+#
+# What happens? What do you notice about the output?
 
 drivingTest = function(age) {
   
@@ -40,10 +48,10 @@ drivingTest = function(age) {
       status = "You are not old enough to drive.";
       
     }  
-    print(paste("You are", age, "years old.", status));
+    return(paste("You are", age, "years old.", status));
     
   } else {
-    print("Please call this function with a single numeric input.");
+    return("Please call this function with a single numeric input.");
   }    
 }
 
@@ -78,7 +86,7 @@ miles = c(50, 100, 200, 275)
 #   - The native R function mean() can be used for the mean.
 #   - The standard deviation is calculated as the square root (sqrt()) of the variance (var())
 #       of a set of numbers. Or, use native R function sd().
-#   - To print out the values, you can use print() and paste(), or build an array from your
+#   - To print out the values, you can use print() and paste(), or build an vector or data frame from your
 #       calculated values:
 #         c(mean=avg, stdDev=sd)
 #
@@ -97,10 +105,9 @@ library(MASS) # loads the dataset called "mammals"
 # yourself.
 
 # a. First, create the sample dataset of US car data by running the following:
-data(car90, package = "rpart")
-US = car90[car90$Country=="USA", ]    # Only use American Cars
-US = US[ ,c(10,12,13,14,17,34)]       # Only use specified columns
-US = na.omit(US)                      # Remove NAs
+data(car.test.frame, package = "rpart")
+US = car.test.frame[car.test.frame$Country=="USA", ]    # Only use American Cars
+US = US[ ,c(1,4,6:8)]                                   # Only use specified columns
 
 # b. Call head(), View(), or str() on the US dataset, to get a sense of the contents.
 # How many columns does it have? What are their types?
@@ -108,7 +115,7 @@ US = na.omit(US)                      # Remove NAs
 # c. Now, call the sapply function on the US dataset, to apply the mean function to it.
 
 # Hint: Use the syntax sapply(US, mean). Do you agree that this is equivalent to running
-# mean(US$HP), followed by mean(US$Height), followed by the mean function of each other
+# mean(US$Price), followed by mean(US$Mileage), followed by the mean function of each other
 # column in the US data frame? Can you see the use of the apply() family?
 
 # d. Call the sapply function on the US dataset and the range function.
@@ -166,7 +173,7 @@ s = loadS(survey);
 
 # -------------------------------------------------------------------
 
-# 6. Demo: Convert all heights in the data frame to inches ("Imperial") from Metric.
+# 6. Advanced Demo: Convert all heights in the data frame to inches ("Imperial") from Metric.
 # one inch = 2.54 cm
 #
 # Implemented as a demo: look over it, play with it, understand it!
