@@ -34,4 +34,6 @@ factorify <- function(df) {
   return(ndf)
 }
 
-#testme = factorifyNew(sample)
+# example call, using a data frame called "sample":
+# output will be a dataframe called "testme"
+#testme = factorify(sample)
