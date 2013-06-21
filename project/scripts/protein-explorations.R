@@ -1,9 +1,6 @@
 # protein explorations
 
-# set current directory
-setwd("/home/jsperhac/ccr-office/summer-workshop/2013/project/protein-data/second-iteration/try-me")
-
-source("useful-functions.R")
+# load data sets from csv files
 
 # Let's explore a few basic characteristics of proteins. We'll plot protein molecular weight and sequence 
 # length, by p_number (in sample data frame) 

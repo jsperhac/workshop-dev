@@ -4,7 +4,6 @@
 
 # --------- Load dataset ---------
 
-source("useful-functions.R")
 
 # -------------- All experiments, crystal/nocrystal, by protein ---------------------
 

@@ -38,7 +38,43 @@
 #
 # -------------------------------
 
-# 1. Suppose you keep track of your mileage each time you fill up your car's gas tank. 
+# 1. R's table, levels, and unique functions
+
+# We often need to find out about the possible values of columns in a data frame. Depending on the
+# datatype of the column, we have different functions to use: 
+#   - levels(), for categorical (factor) data
+#   - unique() for numeric data
+
+# Load the Cars93 dataset from the MASS library:
+library(MASS)
+car = Cars93
+
+# a. Print the structure of the Cars93 data frame. 
+# What are the levels of car Type? of DriveTrain?
+
+# b. Use the table() function to: 
+# Make a contingency table of car Type. Now make a contingency table of DriveTrain.
+# Display your tables. What do they tell you? How does table() differ from levels()?
+
+# c. Make a contingency table that combines both car Type and DriveTrain. 
+# Display your table, and explain the result.
+
+# d. Find the RPM column in the cars data frame. Display it.
+# How many values are found in the RPM column?
+
+# e. Now run the unique() function on the cars RPM column.
+# Display the result. How many values are in the result?
+#
+# What can you infer unique() does? Run ?unique to find out more.
+
+
+# f. What happens if you try to run levels() on the RPM data? Why?
+# What happens if you run unique() on the car Type data?
+
+
+# ------------------------------------------------------------------
+
+# 2. Suppose you keep track of your mileage each time you fill up your car's gas tank. 
 # At your last 8 fill-ups, the mileage was as follows:
 miles =  c(65311, 65624, 65908, 66219, 66499, 66821, 67145, 67447)
 
@@ -57,7 +93,7 @@ boxplot(x, ylab="Distance between fill-ups, in miles", main="Milage at fill-ups"
 
 # --------------------------------
 
-# 2. You track your commute times for two weeks (10 days) and you find the following times in minutes:
+# 3. You track your commute times for two weeks (10 days) and you find the following times in minutes:
 #       17 16 20 24 22 15 21 15 17 22
 #
 # a. Enter this data into a vector called commute. Use R functions to find the longest and shortest  
@@ -87,7 +123,7 @@ boxplot(commute, ylab="Commute time/minutes", main="Corrected commute data")
 
 # ----------------------------------------------------------
 
-# 3. Your cell phone bill varies from month to month. Suppose that your bills had the following monthly 
+# 4. Your cell phone bill varies from month to month. Suppose that your bills had the following monthly 
 # amounts last year:
 # 46 33 39 37 46 30 48 32 49 35 30 48
 
