@@ -4,6 +4,11 @@
 
 # --------- Load dataset ---------
 
+# drop, experiment, sample datasets
+
+# load the factorify function:
+source("./project/scripts/generalFactorifyFunction.R")
+
 
 # -------------- All experiments, crystal/nocrystal, by protein ---------------------
 
@@ -79,3 +84,13 @@
 # (Optional)
 # Make a piechart displaying the counts of chemical cocktails that achieve 1,2...max crystallizations.
 # Display the percentages and provide a title for the plot.
+
+# ------------- Looking at PDB and the experiment images ---------------
+
+# Pick your favorite protein and look it up on the PDB (Protein Data Bank). Learn what organism
+# makes it, what it does, and what its structure looks like. To do this, look in the experiment
+# data frame, in the targetdb_status column. Use this value in the PDB (rscb.org).
+
+# View some images of experiments on this protein. Can you identify which ones look crystallized?
+# Here, use the merge() command on experiment and expUrl data frames. Find your protein and look
+# at some image urls.

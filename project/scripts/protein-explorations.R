@@ -1,6 +1,6 @@
 # protein explorations
 
-# load data sets from csv files
+# load experiment, sample, and expUrl data from the csv files
 
 # Let's explore a few basic characteristics of proteins. We'll plot protein molecular weight and sequence 
 # length, by p_number (in sample data frame) 
@@ -35,3 +35,13 @@
 # and compute the correlation.
 # Does this look like a reasonable approximation to you?
 
+
+# ----------------------------
+
+# Pick your favorite protein and look it up on the PDB (Protein Data Bank). Learn what organism
+# makes it, what it does, and what its structure looks like. To do this, look in the experiment
+# data frame, in the targetdb_status column. Use this value in the PDB (rscb.org).
+
+# View some images of experiments on this protein. Can you identify which ones look crystallized?
+# Here, use the merge() command on experiment and expUrl data frames. Find your protein and look
+# at some image urls.

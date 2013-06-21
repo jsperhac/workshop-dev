@@ -7,6 +7,9 @@
 
 # first, load the dataset: sample and experiment 
 
+# load the factorify function:
+source("./project/scripts/generalFactorifyFunction.R")
+
 # -------- total experiments with successful crystallizations: pie chart -------------------
 
 # Generate a pie chart that shows the number of experiments with successful crystallizations,
