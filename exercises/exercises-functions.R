@@ -86,15 +86,15 @@ miles = c(50, 100, 200, 275)
 #   - The native R function mean() can be used for the mean.
 #   - The standard deviation is calculated as the square root (sqrt()) of the variance (var())
 #       of a set of numbers. Or, use native R function sd().
-#   - To print out the values, you can use print() and paste(), or build an vector or data frame from your
-#       calculated values:
+#   - To output the values, build a vector or data frame from your
+#       calculated values, then return that:
 #         c(mean=avg, stdDev=sd)
 #
 library(MASS) # loads the dataset called "mammals"
 
 # ------------------------------
 
-# 4. apply() function
+# 4. apply() functions
 #
 # The apply() family of functions can be used to call some other function multiple times, and in doing
 # so call it with several different arguments. In this exercise we will explore the use of the
