@@ -23,11 +23,12 @@ the random pair).
 Read the following sources to learn about ROC curves:
 
 http://www.medcalc.org/manual/roc-curves.php
-http://gim.unmc.edu/dxtests/roc2.htm and http://gim.unmc.edu/dxtests/roc3.htm
-http://www2.cs.uregina.ca/~dbd/cs831/notes/ROC/ROC.html
+	read sections titled: Description; Theory summary; Schematic outcomes of a test; 
+	Sensitivity and specificity vs. criterion value; The ROC curve
 
-An introduction to ROC analysis:
-https://www.sciencedirect.com/science/article/pii/S016786550500303X?np=y
+https://en.wikipedia.org/wiki/ROC_plot
+
+http://www2.cs.uregina.ca/~dbd/cs831/notes/ROC/ROC.html
 
 The pROC package:
 https://www.biomedcentral.com/1471-2105/12/77
