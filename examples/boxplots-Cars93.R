@@ -95,7 +95,7 @@ boxplot(formula=Price~type,
         xlab='Vehicle Type', 
         ylab='Average Price in Thousands of Dollars',
         col=colors)
-title("Vehicle weight by price, type ordered by price")
+title("Vehicle type by price")
 par(mfrow=c(1,1)) # restore default: one plot per page
 
 
