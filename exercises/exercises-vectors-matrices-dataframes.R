@@ -23,7 +23,7 @@
 # x[2]          # return ith element; (i = 2)
 # x[-2]         # return all but ith element; (i = 2)  
 # x[1:5]        # return first k elements; (k = 5) 
-# x[(length(x)-5):length(x)]    # return last k elements; (k = 5)
+# x[(length(x)-5+1):length(x)]    # return last k elements; (k = 5)
 # x[c(1,3,5)]                   # return specific elements; (First, 3rd and 5th)
 # x[x>3]                        # return all elements that are greater than some value (the value is 3) 
 # x[ x< -2 | x > 2]             # return elements bigger than or less than some values (the value is 2) 
@@ -36,8 +36,8 @@ x = c(313, 284, 311, 280, 322, 324, 302)
 #   b. The last 2 elements of x
 #   c. All elements of x that are less than 290
 #   d. The index of x that corresponds to the smallest value
-#   e. The value of element x[10]
-#   f. x[-10]
+#   e. The value of element x[10]. What does it mean?
+#   f. x[-10]. What does it mean?
 
 # --------------------------------
 
@@ -51,10 +51,8 @@ w = c("red", "orange", "green")
 # c. Create a vector x, containing the two vectors y and w.
 # Hint: use the c() function to make a vector of vectors.	
 
-# d. What is the type of x? Why? Hint: Use class() to find the type. 
-#
-# x's datatype is character; since a vector can contain only a single datatype, the numeric values 
-# were changed into (coerced to) character strings when the vectors were combined.
+# d. What is the type of each vector: w, y, and x? Why does x have this type? 
+# Hint: Use class() to find the types. 
 
 # -------------------------------
 
@@ -74,7 +72,7 @@ s = data.frame(Gender=survey$Sex,
 # 2. How many rows are in the data frame s?
 # 
 # Hints: use the dim() function to find the data frame's dimensions,
-#   or use the summary() or View() function.
+#   or use the summary(), print(), or View() function.
 
 
 # -------------------------------------------------------------------
@@ -116,6 +114,14 @@ s[1:10,"Gender"]
 # Gender, Hand, Height, and Age. 
 #
 # The sections outlined below take you through one way to do this exercise.
+
+# If needed, clear all variables and load the data frame "s":
+library(MASS)
+s = data.frame(Gender=survey$Sex, 
+               Hand=survey$W.Hnd, 
+               Height=survey$Height, 
+               HtUnit=survey$M.I, 
+               Age=survey$Age)
 
 # a. Determine which row indexes have NAs for each measure (Gender, 
 # Hand, Height, HeightUnit, Age).
